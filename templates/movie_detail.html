@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <style>
+        body {
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/725/857/282/empty-room-wallpaper-preview.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin-right: 30px;
+        }
+        .details {
+            text-align: left;
+            max-width: 600px;
+        }
+        .details h2 {
+            text-align: center;
+        }
+        .details h3 {
+            margin: 10px 0;
+        }
+        a {
+            color: Gray;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <h3>{{ tagline }}</h3> <!-- Added tagline below title -->
+
+    <div class="container">
+        <img src="{{ poster }}" alt="{{ title }}">
+        <div class="details">
+            <h2>Overview</h2>
+            <p>{{ overview }}</p>
+
+            <h3>Release Date: {{ release_date }}</h3>
+
+            <h3>Runtime: {{ runtime }} mins</h3>
+
+            <h3>Genres: {{ genres }}</h3>
+
+            <h3>Status: {{ status }}</h3> <!-- Displaying hit/survived status -->
+
+            <h3>Rating: {{ vote_average }}</h3> <!-- Displaying vote average (rating) -->
+        </div>
+    </div>
+
+    <a href="/">Go Back to Homepage</a>
+</body>
+</html>

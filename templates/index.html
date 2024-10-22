@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <style>
+        body {
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/917/4/924/dark-lines-background-black-wallpaper-preview.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input, select {
+            padding: 10px;
+            font-size: 1.2rem;
+        }
+        button {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .recommendations {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .col {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+        }
+        .col p {
+            margin-top: 10px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Recommender</h1>
+
+    <form method="POST">
+        <label for="selected_movie">Select a Movie:</label><br>
+        <select id="selected_movie" name="selected_movie">
+            {% for movie in movie_list %}
+            <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Show Recommendations</button>
+    </form>
+
+    <div class="recommendations">
+        {% if movie_recommendations %}
+        <div class="row">
+            {% for name, poster, movie_id in movie_recommendations %}
+            <div class="col">
+                <a href="/movie/{{ movie_id }}"><img src="{{ poster }}" alt="{{ name }}"></a>
+                <p>{{ name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    {% if movie_recommendations %}
+    <a href="/">Clear Result</a>
+    {% endif %}
+</body>
+</html>
